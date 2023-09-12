@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux" 
 import characterReducer from "./character/slice";
+import favoritesReducer from "./favorites/slice";
 
 export const store = configureStore({
    reducer: {
-    characters: characterReducer
+    characters: characterReducer,
+    favorites: favoritesReducer
    }
 });
 

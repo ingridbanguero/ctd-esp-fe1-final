@@ -1,6 +1,6 @@
 import Filtros from "../componentes/personajes/filtros.componente"
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
-import { useAppDispatch } from '../store';
+import { useAppDispatch, useAppSelector } from '../store';
 import Paginacion from "../componentes/paginacion/paginacion.componente";
 import { CLEAN_FILTERS } from '../store/character/slice';
  
@@ -13,6 +13,7 @@ import { CLEAN_FILTERS } from '../store/character/slice';
  * @returns la pagina de inicio
  */
 const PaginaInicio = () => {
+    const characters = useAppSelector(state => state.characters.character)
     const dispatch = useAppDispatch()
 
     const handlerClean = () => {
@@ -26,7 +27,7 @@ const PaginaInicio = () => {
         </div>
         <Filtros />
         <Paginacion />
-        <GrillaPersonajes />
+        <GrillaPersonajes characters={characters}/>
         <Paginacion />
     </div>
 }

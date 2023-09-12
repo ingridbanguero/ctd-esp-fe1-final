@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../store';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 import { GET_CHARACTERS } from '../../store/character/slice';
+import Character from '../../types/character';
 
 /**
  * Grilla de personajes para la pagina de inicio
@@ -12,8 +13,7 @@ import { GET_CHARACTERS } from '../../store/character/slice';
  * 
  * @returns un JSX element 
  */
-const GrillaPersonajes = () => {
-    const characters = useAppSelector(state => state.characters)
+const GrillaPersonajes = ({ characters }: {characters: Character[]}) => {
     const page = useAppSelector(state => state.characters.page)
     const filter = useAppSelector(state => state.characters.filter)
     const dispatch = useAppDispatch()
@@ -24,7 +24,7 @@ const GrillaPersonajes = () => {
 
     return (
     <div className="grilla-personajes">
-        { characters.character.map(character => <TarjetaPersonaje character={character} key={character.id}/>) }
+        { characters.map(character => <TarjetaPersonaje character={character} key={character.id}/>) }
     </div>
     );
 }

@@ -5,7 +5,7 @@ export type CharacterState = {
     character : Character[], // Lista de personajes
     page: number,
     isLoading: boolean,
-    filter: string
+    filter: string,
 }
 
 const initialState : CharacterState = {
@@ -15,7 +15,7 @@ const initialState : CharacterState = {
     isLoading: false,
 }
 
-export const GET_CHARACTERS = createAsyncThunk("character/getCharacters", async ({ page = 1, filter = "" }: { page: number; filter: string }) => {
+export const GET_CHARACTERS = createAsyncThunk("character/getCharacters", async ({ page = 1, filter = ""}: { page: number; filter: string }) => {
     const name = `&name=${filter}`;
     const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}${name}`);
     const data = await res.json();
@@ -23,7 +23,7 @@ export const GET_CHARACTERS = createAsyncThunk("character/getCharacters", async 
         const char : Character = {
             id: character.id,
             name: character.name,
-            image: character.image
+            image: character.image,
         }
         return char
     })
@@ -45,7 +45,7 @@ export const characterSlice = createSlice({
         CLEAN_FILTERS: (state) => {
             state.filter = "";
             state.page = 1;
-        }
+        },
     },
     extraReducers : (builder) => {
         builder
