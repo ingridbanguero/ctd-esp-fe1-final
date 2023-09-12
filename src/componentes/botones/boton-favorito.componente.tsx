@@ -11,7 +11,6 @@ type botonFavorito = {
  * 
  * Deberás tipar las propiedades si usas este componente
  * 
- * 
  * @returns un JSX element 
  */
 const BotonFavorito = ({esFavorito, onClick} : botonFavorito) => {

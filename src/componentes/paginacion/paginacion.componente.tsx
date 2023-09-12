@@ -1,4 +1,6 @@
 import './paginacion.css';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { CHANGE_PAGE } from '../../store/character/slice';
 
 /**
  * Componente que contiene los botones para paginar
@@ -9,10 +11,12 @@ import './paginacion.css';
  * @returns un JSX element 
  */
 const Paginacion = () => {
+    const page = useAppSelector(state => state.characters.page)
+    const dispatch = useAppDispatch();
 
     return <div className="paginacion">
-        <button disabled={true} className={"primary"}>Anterior</button>
-        <button disabled={false} className={"primary"}>Siguiente</button>
+        <button disabled={page === 1 ? true : false} className={"primary"} onClick={() => dispatch(CHANGE_PAGE(-1))}>Anterior</button>
+        <button disabled={false} className={"primary"} onClick={() => dispatch(CHANGE_PAGE(1))}>Siguiente</button>
     </div>
 }
 

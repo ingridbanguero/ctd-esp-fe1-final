@@ -1,5 +1,8 @@
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
+import { GET_CHARACTERS } from '../../store/character/slice';
 
 /**
  * Grilla de personajes para la pagina de inicio
@@ -10,12 +13,20 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  * @returns un JSX element 
  */
 const GrillaPersonajes = () => {
+    const characters = useAppSelector(state => state.characters)
+    const page = useAppSelector(state => state.characters.page)
+    const filter = useAppSelector(state => state.characters.filter)
+    const dispatch = useAppDispatch()
 
-    return <div className="grilla-personajes">
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
+    useEffect(() => {
+        dispatch(GET_CHARACTERS({page, filter}))
+    }, [dispatch, page, filter])
+
+    return (
+    <div className="grilla-personajes">
+        { characters.character.map(character => <TarjetaPersonaje character={character} key={character.id}/>) }
     </div>
+    );
 }
  
 export default GrillaPersonajes;
