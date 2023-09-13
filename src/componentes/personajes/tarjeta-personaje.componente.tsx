@@ -5,12 +5,10 @@ import { ADD_FAVORITE, DELETE_FAVORITE } from '../../store/favorites/slice';
 import { useAppDispatch, useAppSelector } from '../../store';
 
 /**
- * Tarjeta para cada personaje dentro de la grilla de personajes. 
- * 
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- * 
- * 
- * @returns un JSX element 
+ * Card for each character within the character grid.
+ * @param {Object} props - The parameters received by props.
+ * @param {Object} props.character - The object with the properties of each character
+ * @returns JSX element 
  */
 const TarjetaPersonaje = ({ character }: {character: Character}) => {
     const favorites = useAppSelector(state => state.favorites )

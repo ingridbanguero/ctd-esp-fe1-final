@@ -15,6 +15,15 @@ const initialState : CharacterState = {
     isLoading: false,
 }
 
+/**
+ * Fetches all characters from the API based on the given parameters.
+ * @async
+ * @function
+ * @param {Object} params - The parameters for the API call.
+ * @param {number} params.page - The page number to fetch.
+ * @param {string} params.filter - The name to filter characters by text.
+ * @returns {Promise<Object[]>} - A promise that resolves to an array of character objects.
+ */
 export const GET_CHARACTERS = createAsyncThunk("character/getCharacters", async ({ page = 1, filter = ""}: { page: number; filter: string }) => {
     const name = `&name=${filter}`;
     const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}${name}`);
@@ -35,13 +44,30 @@ export const characterSlice = createSlice({
     name: 'characters',
     initialState,
     reducers: {
+         /**
+         * Reducer function to filter characters for page
+         * @function
+         * @param {CharacterState} state - The current state of characters.
+         * @param {PayloadAction<number>} action - The number of the new page to filter.
+         */
         CHANGE_PAGE: (state, action : PayloadAction<number>) => {
             state.page += action.payload;
             state.page <= 0 && (state.page = 1);
         },
+        /**
+         * Reducer function to filter characters for text
+         * @function
+         * @param {CharacterState} state - The current state of characters.
+         * @param {PayloadAction<string>} action - The text of the character name to filter.
+         */
         FILTER_TEXT: (state, action : PayloadAction<string>) => {
             state.filter = action.payload;
         },
+        /**
+         * Reducer function to clear filters to characters
+         * @function
+         * @param {CharacterState} state - The current state of characters.
+         */
         CLEAN_FILTERS: (state) => {
             state.filter = "";
             state.page = 1;

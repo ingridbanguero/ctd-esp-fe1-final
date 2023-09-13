@@ -4,12 +4,8 @@ import { DELETE_ALL_FAVORITE } from "../store/favorites/slice";
 import { useAppDispatch } from "../store";
 
 /**
- * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
- * 
- * Uso: 
- * ``` <PaginaFavoritos /> ```
- * 
- * @returns la pagina de favoritos
+ * This is the favorites page. Characters marked as favorites are displayed
+ * @returns JSX element 
  */
 const PaginaFavoritos = () => {
     const dispatch = useAppDispatch()

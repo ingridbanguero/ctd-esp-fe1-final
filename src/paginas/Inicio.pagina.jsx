@@ -5,12 +5,8 @@ import Paginacion from "../componentes/paginacion/paginacion.componente";
 import { CLEAN_FILTERS } from '../store/character/slice';
  
 /**
- * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
- * 
- * Uso: 
- * ``` <PaginaInicio /> ```
- * 
- * @returns la pagina de inicio
+ * Main page with filters and grid with characters
+ * @returns JSX element 
  */
 const PaginaInicio = () => {
     const characters = useAppSelector(state => state.characters.character)

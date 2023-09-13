@@ -7,13 +7,12 @@ import Character from '../../types/character';
 
 /**
  * Grilla de personajes para la pagina de inicio
- * 
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- * 
- * 
- * @returns un JSX element 
+ * @param {Object} props - The parameters received by props.
+ * @param {array} props.characters - The array with the characters to be rendered
+ * @returns JSX element 
  */
 const GrillaPersonajes = ({ characters }: {characters: Character[]}) => {
+
     const page = useAppSelector(state => state.characters.page)
     const filter = useAppSelector(state => state.characters.filter)
     const dispatch = useAppDispatch()

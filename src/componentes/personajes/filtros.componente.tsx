@@ -3,6 +3,10 @@ import { useAppDispatch } from '../../store';
 import { FILTER_TEXT } from '../../store/character/slice';
 
 
+/**
+ * Section with the input that allows you to filter the characters by name
+ * @returns JSX element 
+ */
 const Filtros = () => {
     const dispatch = useAppDispatch()
 
